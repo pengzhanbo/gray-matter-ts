@@ -75,7 +75,7 @@
     "conventional-changelog": "^7.1.1",
     "conventional-changelog-angular": "^8.1.0",
     "eslint": "^9.39.1",
-    "gray-matter-ts": "file:dist",
+    "gray-matter-ts": "file:.",
     "lint-staged": "^16.2.7",
     "simple-git-hooks": "^2.13.1",
     "toml": "^3.0.0",
