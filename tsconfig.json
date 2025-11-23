@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "@pengzhanbo/tsconfig",
+    "@pengzhanbo/tsconfig/tsconfig.lib.json"
+  ],
+  "compilerOptions": {
+    "baseUrl": "."
+  },
+  "include": [
+    "src",
+    "tests"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
