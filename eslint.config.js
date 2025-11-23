@@ -5,4 +5,9 @@ export default config({
   ignores: [
     'tests/fixtures',
   ],
+}, {
+  files: ['examples/**/*.mjs'],
+  rules: {
+    'no-console': 'off',
+  },
 })
