@@ -2,10 +2,11 @@
 
 [![ESM-only package][package]][package-url]
 [![NPM version][npm]][npm-url]
-[![Install size][size]][size-url]
-[![Build status][build]][build-url]
 [![NPM monthly downloads][downloads]][npm-url]
 [![NPM total downloads][total-downloads]][npm-url]
+
+[![Install size][size]][size-url]
+[![Build status][build]][build-url]
 [![codecov][codecov]][codecov-url]
 
 [package]: https://img.shields.io/badge/package-ESM--only-ffe536.svg
