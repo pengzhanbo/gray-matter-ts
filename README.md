@@ -1,5 +1,26 @@
 # gray-matter-ts
 
+[![ESM-only package][package]][package-url]
+[![NPM version][npm]][npm-url]
+[![Install size][size]][size-url]
+[![Build status][build]][build-url]
+[![NPM monthly downloads][downloads]][npm-url]
+[![NPM total downloads][total-downloads]][npm-url]
+[![codecov][codecov]][codecov-url]
+
+[package]: https://img.shields.io/badge/package-ESM--only-ffe536.svg
+[package-url]: https://nodejs.org/api/esm.html
+[npm]: https://img.shields.io/npm/v/gray-matter-ts.svg
+[npm-url]: https://npmjs.com/package/gray-matter-ts
+[size]: https://packagephobia.com/badge?p=gray-matter-ts
+[size-url]: https://packagephobia.com/result?p=gray-matter-ts
+[build]: https://img.shields.io/github/actions/workflow/status/pengzhanbo/gray-matter-ts/test.yaml
+[build-url]: https://github.com/pengzhanbo/gray-matter-ts/actions
+[codecov]: https://codecov.io/gh/pengzhanbo/gray-matter-ts/graph/badge.svg?token=MG0BLXS3NB
+[codecov-url]: https://codecov.io/gh/pengzhanbo/gray-matter-ts
+[downloads]: https://img.shields.io/npm/dm/gray-matter-ts.svg
+[total-downloads]: https://img.shields.io/npm/dt/gray-matter-ts.svg
+
 > Parse front-matter from a string or file. Fast, reliable and easy to use. Parses YAML front matter by default, but also has support for YAML, JSON, TOML or Coffee Front-Matter, with options to set custom delimiters. Used by metalsmith, assemble, verb and many other projects.
 
 ## Install
