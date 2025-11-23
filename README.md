@@ -174,7 +174,7 @@ git clone https://github.com/pengzhanbo/gray-matter-ts my-project
 CD into `my-project` and install dependencies:
 
 ```sh
-cd my-project && npm install
+cd my-project && pnpm install && pnpm build
 ```
 
 Then run any of the [examples](./examples) to see how gray-matter works:
@@ -185,19 +185,19 @@ node examples/<example_name>
 
 **Links to examples**
 
-* [coffee](examples/coffee.js)
-* [excerpt-separator](examples/excerpt-separator.js)
-* [excerpt-stringify](examples/excerpt-stringify.js)
-* [excerpt](examples/excerpt.js)
-* [javascript](examples/javascript.js)
-* [json-stringify](examples/json-stringify.js)
-* [json](examples/json.js)
-* [restore-empty](examples/restore-empty.js)
-* [sections-excerpt](examples/sections-excerpt.js)
-* [sections](examples/sections.js)
-* [toml](examples/toml.js)
-* [yaml-stringify](examples/yaml-stringify.js)
-* [yaml](examples/yaml.js)
+* [coffee](examples/coffee.mjs)
+* [excerpt-separator](examples/excerpt-separator.mjs)
+* [excerpt-stringify](examples/excerpt-stringify.mjs)
+* [excerpt](examples/excerpt.mjs)
+* [javascript](examples/javascript.mjs)
+* [json-stringify](examples/json-stringify.mjs)
+* [json](examples/json.mjs)
+* [restore-empty](examples/restore-empty.mjs)
+* [sections-excerpt](examples/sections-excerpt.mjs)
+* [sections](examples/sections.mjs)
+* [toml](examples/toml.mjs)
+* [yaml-stringify](examples/yaml-stringify.mjs)
+* [yaml](examples/yaml.mjs)
 
 ## API
 
