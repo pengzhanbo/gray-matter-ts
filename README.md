@@ -22,7 +22,13 @@
 [downloads]: https://img.shields.io/npm/dm/gray-matter-ts.svg
 [total-downloads]: https://img.shields.io/npm/dt/gray-matter-ts.svg
 
+> [!INFO]
 > Parse front-matter from a string or file. Fast, reliable and easy to use. Parses YAML front matter by default, but also has support for YAML, JSON, TOML or Coffee Front-Matter, with options to set custom delimiters. Used by metalsmith, assemble, verb and many other projects.
+
+---
+
+> [!IMPORTANT]
+> **This is a fork of [gray-matter](https://github.com/jonschlinkert/gray-matter)**, but it's written in Typescript. Thanks to [jonschlinkert](https://github.com/jonschlinkert) for the fork.
 
 ## Install
 
@@ -74,7 +80,7 @@ const file = {
 }
 ```
 
-## Why use gray-matter?
+## Why use gray-matter-ts?
 
 * **simple**: main function takes a string and returns an object
 * **accurate**: better at catching and handling edge cases than front-matter parsers that rely on regex for parsing
