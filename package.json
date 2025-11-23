@@ -55,8 +55,7 @@
     "lint": "eslint .",
     "test": "vitest --coverage",
     "prepare": "simple-git-hooks",
-    "prepublishOnly": "pnpm build && release:version && pnpm publish --access public",
-    "release": "pnpm lint",
+    "release": "pnpm lint && pnpm test --run && pnpm build && pnpm release:version && pnpm publish --access public",
     "release:changelog": "conventional-changelog -p angular",
     "release:version": "bumpp package.json --execute=\"pnpm release:changelog\" --commit \"build: publish v%s\" --push --tag"
   },
