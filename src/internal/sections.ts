@@ -131,6 +131,7 @@ function isDelimiter(line: string, delim: string): boolean {
   if (line.slice(0, delim.length) !== delim) {
     return false
   }
+  /* v8 ignore if -- @preserve */
   if (line.charAt(delim.length + 1) === delim.slice(-1)) {
     return false
   }

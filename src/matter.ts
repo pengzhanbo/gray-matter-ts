@@ -37,17 +37,17 @@ export function matter<D extends Data>(
   input: { content: Buffer },
   options?: GrayMatterOptions<Buffer, D>,
 ): GrayMatterFile<Buffer, D>
-export function matter<D extends Data>(
-  input: Input | { content: Input },
-  options?: GrayMatterOptions<Input, D>,
-): GrayMatterFile<Input, D> {
+export function matter<D extends Data, I extends Input = Input>(
+  input: I | { content: I },
+  options?: GrayMatterOptions<I, D>,
+): GrayMatterFile<I, D> {
   if (input === '') {
-    return { data: {}, content: '', excerpt: '', orig: input } as GrayMatterFile<Input, D>
+    return { data: {}, content: '', excerpt: '', orig: input } as GrayMatterFile<I, D>
   }
 
-  let file = toFile<Input>(input)
+  let file = toFile<I, D>(input)
   const key = hash(file.content)
-  const cached = cache.get(key)
+  const cached = cache.get(key) as GrayMatterFile<I, D>
 
   if (!options) {
     if (cached)
@@ -56,8 +56,8 @@ export function matter<D extends Data>(
     // only cache if there are no options passed. if we cache when options
     // are passed, we would need to also cache options values, which would
     // negate any performance benefits of caching
-    cache.set(key, file)
+    cache.set(key, file as GrayMatterFile)
   }
 
-  return parseMatter(file, options) as GrayMatterFile<Input, D>
+  return parseMatter<I, D>(file, options)
 }

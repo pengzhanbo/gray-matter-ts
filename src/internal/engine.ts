@@ -1,10 +1,10 @@
-import type { GrayMatterEngine } from '../types'
+import type { Data, GrayMatterEngine, Input } from '../types'
 import type { ResolvedOptions } from './defaults'
 
 /**
  * Find gray-matter engine
  */
-export function findEngine(name: string, { engines }: ResolvedOptions): GrayMatterEngine {
+export function findEngine<I extends Input, D extends Data>(name: string, { engines }: ResolvedOptions<I, D>): GrayMatterEngine<D> {
   let engine = engines[name] || engines[aliase(name)]
   if (typeof engine === 'undefined') {
     throw new TypeError(`gray-matter engine "${name}" is not registered`)

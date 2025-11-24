@@ -9,9 +9,9 @@ import { language as getLanguage } from './language'
  * Parse front matter
  */
 export function parseMatter<
-  D extends Data,
   I extends Input,
->(file: GrayMatterFile<I>, options?: GrayMatterOptions<I, D>): GrayMatterFile<I> {
+  D extends Data,
+>(file: GrayMatterFile<I, D>, options?: GrayMatterOptions<I, D>): GrayMatterFile<I, D> {
   const opts = defaults<I, D>(options)
   const open = opts.delimiters[0]
   const close = `\n${opts.delimiters[1]}`
@@ -24,7 +24,7 @@ export function parseMatter<
   // get the length of the opening delimiter
   const openLen = open.length
   if (!str.startsWith(open)) {
-    getExcerpt(file, opts as GrayMatterOptions)
+    getExcerpt<I, D>(file, opts)
     return file
   }
 
@@ -59,11 +59,11 @@ export function parseMatter<
   if (block === '') {
     file.isEmpty = true
     file.empty = file.content
-    file.data = {}
+    file.data = {} as D
   }
   else {
     // create file.data by parsing the raw file.matter block
-    file.data = parse(file.language, file.matter, opts as GrayMatterOptions)
+    file.data = parse(file.language, file.matter, opts)
   }
 
   // update file.content
@@ -80,7 +80,7 @@ export function parseMatter<
     }
   }
 
-  getExcerpt(file, opts as GrayMatterOptions)
+  getExcerpt<I, D>(file, opts)
 
   if (opts.sections === true || typeof opts.section === 'function') {
     sections(file, opts.section)

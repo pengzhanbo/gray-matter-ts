@@ -15,7 +15,7 @@ export interface GrayMatterOptions<I extends Input = Input, D extends Data = Dat
    * Whether to extract the excerpt
    * @default false
    */
-  excerpt?: boolean | string | ((input: string, options: GrayMatterOptions<I, D>) => string)
+  excerpt?: boolean | string | ((file: GrayMatterFile<I, D>, options: GrayMatterOptions<I, D>) => GrayMatterFile<I, D> | void)
   /**
    * The separator to use between the excerpt and the rest of the content
    */

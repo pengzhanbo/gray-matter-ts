@@ -1,11 +1,11 @@
-import type { GrayMatterOptions } from '../types'
+import type { Data, GrayMatterOptions, Input } from '../types'
 import { defaults } from './defaults'
 import { findEngine } from './engine'
 
 /**
  * Parse front-matter
  */
-export function parse(language: string, input: string, options?: GrayMatterOptions): object {
+export function parse<I extends Input, D extends Data>(language: string, input: string, options?: GrayMatterOptions<I, D>): D {
   const opts = defaults(options)
   const engine = findEngine(language, opts)
   /* v8 ignore if -- @preserve */

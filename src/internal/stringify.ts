@@ -1,9 +1,13 @@
-import type { Data, GrayMatterFile, GrayMatterOptions } from '../types'
-import { defaults } from './defaults'
+import type { Data, GrayMatterFile, GrayMatterOptions, Input } from '../types'
+import { defaults, type ResolvedOptions } from './defaults'
 import { findEngine } from './engine'
 import { isObject } from './utils'
 
-export function stringify(file: Partial<GrayMatterFile> | string, data?: Data, options?: GrayMatterOptions): string {
+export function stringify<I extends Input, D extends Data>(
+  file: Partial<GrayMatterFile<I, D>> | string,
+  data?: Data,
+  options?: GrayMatterOptions<I, D>,
+): string {
   if (data == null && options == null) {
     if (typeof file === 'string') {
       return file
@@ -16,7 +20,7 @@ export function stringify(file: Partial<GrayMatterFile> | string, data?: Data, o
     }
   }
 
-  file = (typeof file === 'string' ? { content: file } : file) as GrayMatterFile
+  file = (typeof file === 'string' ? { content: file } : file) as GrayMatterFile<I, D>
 
   const input = file.content!
   const opts = defaults(options)
@@ -26,7 +30,7 @@ export function stringify(file: Partial<GrayMatterFile> | string, data?: Data, o
   }
 
   const language = file.language || opts.language
-  const engine = findEngine(language, opts)
+  const engine = findEngine(language, opts as ResolvedOptions)
   /* v8 ignore if -- @preserve */
   if (typeof engine.stringify !== 'function') {
     throw new TypeError(`expected "${language}.stringify" to be a function`)
