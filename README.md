@@ -5,7 +5,7 @@
 [![NPM monthly downloads][downloads]][npm-url]
 [![NPM total downloads][total-downloads]][npm-url]
 
-[![Install size][size]][size-url]
+![npm bundle size][size]
 [![Build status][build]][build-url]
 [![codecov][codecov]][codecov-url]
 
@@ -13,8 +13,7 @@
 [package-url]: https://nodejs.org/api/esm.html
 [npm]: https://img.shields.io/npm/v/gray-matter-ts.svg
 [npm-url]: https://npmjs.com/package/gray-matter-ts
-[size]: https://packagephobia.com/badge?p=gray-matter-ts
-[size-url]: https://packagephobia.com/result?p=gray-matter-ts
+[size]: https://img.shields.io/bundlephobia/minzip/gray-matter-ts
 [build]: https://img.shields.io/github/actions/workflow/status/pengzhanbo/gray-matter-ts/test.yaml
 [build-url]: https://github.com/pengzhanbo/gray-matter-ts/actions
 [codecov]: https://codecov.io/gh/pengzhanbo/gray-matter-ts/graph/badge.svg?token=MG0BLXS3NB
@@ -82,9 +81,8 @@ const file = {
 * **simple**: main function takes a string and returns an object
 * **accurate**: better at catching and handling edge cases than front-matter parsers that rely on regex for parsing
 * **fast**: faster than other front-matter parsers that use regex for parsing
-* **flexible**: By default, gray-matter is capable of parsing [YAML](https://github.com/nodeca/js-yaml), [JSON](http://en.wikipedia.org/wiki/Json) and JavaScript front-matter. But other [engines](#optionsengines) may be added.
+* **flexible**: By default, gray-matter is capable of parsing [YAML](https://github.com/nodeca/js-yaml), [JSON](http://en.wikipedia.org/wiki/Json). But other [engines](#optionsengines) may be added.
 * **extensible**: Use [custom delimiters](#optionsdelimiters), or add support for [any language](#optionsengines), like [TOML](http://github.com/mojombo/toml), [CoffeeScript](http://coffeescript.org), or [CSON](https://github.com/bevry/cson)
-* **battle-tested**: used by [assemble](https://github.com/assemble/assemble), [metalsmith](https://github.com/segmentio/metalsmith), [phenomic](https://github.com/phenomic/phenomic), [verb](https://github.com/assemble/verb), [generate](https://github.com/generate/generate), [update](https://github.com/update/update) and many others.
 
 <details>
 <summary><strong>Rationale</strong></summary>
@@ -373,7 +371,7 @@ Define custom engines for parsing and/or stringifying front-matter.
 
 **Type**: `Object` Object of engines
 
-**Default**: `JSON`, `YAML` and `JavaScript` are already handled by default.
+**Default**: `YAML`, `JSON` are already handled by default.
 
 **Engine format**
 
@@ -383,37 +381,50 @@ Engines may either be an object with `parse` and (optionally) `stringify` method
 
 ```js
 import { matter } from 'gray-matter-ts'
-import toml from 'toml'
+import { parse, stringify } from 'smol-toml'
 
 /**
  * defined as a function
  */
-
 const file1 = matter(str, {
   engines: {
-    toml: toml.parse.bind(toml),
+    toml: parse,
   }
 })
 
 /**
  * Or as an object
  */
-
 const file2 = matter(str, {
   engines: {
     toml: {
-      parse: toml.parse.bind(toml),
-
-      // example of throwing an error to let users know stringifying is
-      // not supported (a TOML stringifier might exist, this is just an example)
-      stringify() {
-        throw new Error('cannot stringify to TOML')
-      }
+      parse,
+      stringify,
     }
   }
 })
 
 console.log(file1, file2)
+```
+
+You can also use other preset `engines` we provide, which are not built-in `engines` and require you to add them manually:
+
+```js
+import { matter } from 'gray-matter-ts'
+
+// should install `coffeescript` as a dependency
+import { coffee } from 'gray-matter-ts/engines/coffeescript'
+import { javascript } from 'gray-matter-ts/engines/javascript'
+// should install `smol-toml` as a dependency
+import { toml } from 'gray-matter-ts/engines/toml'
+
+const file = matter(str, {
+  engines: {
+    coffee,
+    javascript,
+    toml
+  }
+})
 ```
 
 ### options.language
