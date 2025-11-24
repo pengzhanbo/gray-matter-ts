@@ -1,5 +1,5 @@
 import { matter } from 'gray-matter-ts'
-import toml from 'toml'
+import { toml } from 'gray-matter-ts/engines/toml'
 
 /**
  * Parse TOML front-matter
@@ -14,10 +14,6 @@ const str = [
   'This is content',
 ].join('\n')
 
-const file = matter(str, {
-  engines: {
-    toml: toml.parse.bind(toml),
-  },
-})
+const file = matter(str, { engines: { toml } })
 
 console.log(file)

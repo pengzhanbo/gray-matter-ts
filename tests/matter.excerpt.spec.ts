@@ -44,8 +44,8 @@ describe('gray-matter .excerpt', () => {
 
   it('should use a custom function to get excerpt', () => {
     const file = matter('---\nabc: xyz\n---\nfoo\nbar\nbaz\n---\ncontent', {
-      excerpt() {
-        return 'custom'
+      excerpt(file) {
+        file.excerpt = 'custom'
       },
     })
 

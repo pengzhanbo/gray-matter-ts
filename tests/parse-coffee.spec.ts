@@ -1,21 +1,11 @@
 import type { GrayMatterOptions } from '../src/types'
-import coffee from 'coffeescript'
 import { describe, expect, it } from 'vitest'
+import { coffee } from '../src/engines/coffeescript'
 import { read } from '../src/read'
 import { fixture, hasOwn } from './helper'
 
-const defaults: Partial<GrayMatterOptions> = {
-  engines: {
-    coffee: {
-      parse(str, options) {
-        return (coffee as any).eval(str, options)
-      },
-    },
-  },
-}
-
 function parse(name: string, options?: GrayMatterOptions) {
-  return read(fixture(name), { ...defaults, ...options })
+  return read(fixture(name), { engines: { coffee }, ...options })
 }
 
 describe('parse coffee', () => {

@@ -50,16 +50,16 @@ importers:
         version: 9.39.1(jiti@2.6.1)
       gray-matter-ts:
         specifier: file:.
-        version: 'file:'
+        version: file:(coffeescript@2.7.0)(smol-toml@1.5.2)
       lint-staged:
         specifier: ^16.2.7
         version: 16.2.7
       simple-git-hooks:
         specifier: ^2.13.1
         version: 2.13.1
-      toml:
-        specifier: ^3.0.0
-        version: 3.0.0
+      smol-toml:
+        specifier: ^1.5.2
+        version: 1.5.2
       tsdown:
         specifier: ^0.16.6
         version: 0.16.6(synckit@0.11.11)(typescript@5.9.3)
@@ -1646,6 +1646,14 @@ packages:
 
   'gray-matter-ts@file:':
     resolution: {directory: '', type: directory}
+    peerDependencies:
+      coffeescript: '>=2'
+      smol-toml: '>=1'
+    peerDependenciesMeta:
+      coffeescript:
+        optional: true
+      smol-toml:
+        optional: true
 
   handlebars@4.7.8:
     resolution: {integrity: sha512-vafaFqs8MZkRrSX7sFVUdo3ap/eNiLnb4IakshzvP56X5Nr1iGKAIqdX6tMlm6HcNRIkr6AxO5jFEoJzzpT8aQ==}
@@ -2435,6 +2443,10 @@ packages:
     resolution: {integrity: sha512-iOBWFgUX7caIZiuutICxVgX1SdxwAVFFKwt1EvMYYec/NWO5meOJ6K5uQxhrYBdQJne4KxiqZc+KptFOWFSI9w==}
     engines: {node: '>=18'}
 
+  smol-toml@1.5.2:
+    resolution: {integrity: sha512-QlaZEqcAH3/RtNyet1IPIYPsEWAaYyXXv1Krsi+1L/QHppjX4Ifm8MQsBISz9vE8cHicIq3clogsheili5vhaQ==}
+    engines: {node: '>= 18'}
+
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
@@ -2549,9 +2561,6 @@ packages:
   toml-eslint-parser@0.10.0:
     resolution: {integrity: sha512-khrZo4buq4qVmsGzS5yQjKe/WsFvV8fGfOjDQN0q4iy9FjRfPWRgTFrU8u1R2iu/SfWLhY9WnCi4Jhdrcbtg+g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-
-  toml@3.0.0:
-    resolution: {integrity: sha512-y/mWCZinnvxjTKYhJ+pYxwD0mRLVvOtdS2Awbgxln6iEnt4rk0yBxeSBHkGJcPucRiG0e55mwWp+g/05rsrd6w==}
 
   tree-kill@1.2.2:
     resolution: {integrity: sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==}
@@ -4456,9 +4465,12 @@ snapshots:
 
   graphemer@1.4.0: {}
 
-  'gray-matter-ts@file:':
+  gray-matter-ts@file:(coffeescript@2.7.0)(smol-toml@1.5.2):
     dependencies:
       js-yaml: 4.1.1
+    optionalDependencies:
+      coffeescript: 2.7.0
+      smol-toml: 1.5.2
 
   handlebars@4.7.8:
     dependencies:
@@ -5488,6 +5500,8 @@ snapshots:
       ansi-styles: 6.2.3
       is-fullwidth-code-point: 5.1.0
 
+  smol-toml@1.5.2: {}
+
   source-map-js@1.2.1: {}
 
   source-map@0.6.1: {}
@@ -5605,8 +5619,6 @@ snapshots:
   toml-eslint-parser@0.10.0:
     dependencies:
       eslint-visitor-keys: 3.4.3
-
-  toml@3.0.0: {}
 
   tree-kill@1.2.2: {}
 

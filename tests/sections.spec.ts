@@ -13,16 +13,20 @@ describe('section-matter', () => {
   it('should throw an error when invalid args are passed', () => {
     // @ts-expect-error should throw
     expect(() => sections()).toThrow()
+    // @ts-expect-error should throw
+    expect(() => sections([])).toThrow()
   })
 
   it('should return a file object', () => {
     expect(sections('')).toEqual({ content: '', sections: [] })
     expect(sections('foo')).toEqual({ content: 'foo', sections: [] })
+    expect(sections({ content: 'foo' })).toEqual({ content: 'foo', sections: [] })
   })
 
   it('should sections from buffer', () => {
     expect(sections(Buffer.from(''))).toEqual({ content: '', sections: [] })
     expect(sections(Buffer.from('foo'))).toEqual({ content: 'foo', sections: [] })
+    expect(sections({ content: Buffer.from('foo') })).toEqual({ content: 'foo', sections: [] })
   })
 
   it('should correctly parse non-sections', () => {

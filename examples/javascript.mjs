@@ -1,5 +1,6 @@
 import { green } from 'ansis'
 import { matter } from 'gray-matter-ts'
+import { javascript } from 'gray-matter-ts/engines/javascript'
 
 const file = matter([
   '---js',
@@ -10,7 +11,7 @@ const file = matter([
   '}',
   '---',
   'This is content',
-].join('\n'))
+].join('\n'), { engines: { javascript } })
 
 console.log(green('/* javascript front-matter */'))
 console.log(file)

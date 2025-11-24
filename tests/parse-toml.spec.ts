@@ -1,17 +1,11 @@
 import type { GrayMatterOptions } from '../src/types'
-import toml from 'toml'
 import { describe, expect, it } from 'vitest'
+import { toml } from '../src/engines/toml'
 import { matter } from '../src/matter'
 import { hasOwn } from './helper'
 
-const defaults: Partial<GrayMatterOptions> = {
-  engines: {
-    toml: str => toml.parse(str),
-  },
-}
-
-function parse(str: string, options?: GrayMatterOptions) {
-  return matter(str, { ...defaults, ...options })
+function parse(str: string, options?: GrayMatterOptions<string>) {
+  return matter(str, { engines: { toml }, ...options })
 }
 
 describe('parse TOML:', () => {

@@ -1,10 +1,11 @@
 import type { GrayMatterOptions } from '../src/types'
 import { describe, expect, it } from 'vitest'
+import { javascript } from '../src/engines/javascript'
 import { read } from '../src/read'
 import { fixture, hasOwn } from './helper'
 
 function parse(name: string, options?: GrayMatterOptions) {
-  return read(fixture(name), options)
+  return read(fixture(name), { engines: { javascript }, ...options })
 }
 
 describe('javascript parser:', () => {

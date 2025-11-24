@@ -17,8 +17,8 @@ console.log(file1)
 // excerpt as a function
 
 // returns the first 4 lines of the contents
-function firstFourLines(content) {
-  return content.split('\n').slice(0, 4).join(' ')
+function firstFourLines(file) {
+  file.excerpt = file.content.split('\n').slice(0, 4).join(' ')
 }
 
 const file2 = matter([

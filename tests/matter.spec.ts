@@ -45,6 +45,10 @@ describe('gray-matter', () => {
     expect(isObject(matter(''))).toBe(true)
   })
 
+  it('should return an object when sections is true', () => {
+    expect(matter('---\nabc: xyz\n---', { sections: true }).data).toEqual({ abc: 'xyz' })
+  })
+
   it('should extract YAML front matter and content', () => {
     const fixture = '---\nabc: xyz\nversion: 2\n---\n\n<span class="alert alert-info">This is an alert</span>\n'
     const actual = matter(fixture)
@@ -97,5 +101,18 @@ describe('gray-matter', () => {
     expect(actual.data).toEqual({})
     expect(actual.content).toBe('-----------name--------------value\nfoo')
     expect(actual.orig.toString()).toBe(fixture)
+  })
+
+  it('should modify YAML front matter and stringify content', () => {
+    const fixture = '---\nabc: xyz\nversion: 2\n---\n\n<span class="alert alert-info">This is an alert</span>\n'
+    const actual = matter(fixture)
+
+    expect(actual.data).toEqual({ abc: 'xyz', version: 2 })
+    expect(actual.content).toBe('\n<span class="alert alert-info">This is an alert</span>\n')
+    expect(actual.orig.toString()).toBe(fixture)
+
+    const modify = actual.stringify({ version: 3 }, { language: 'yaml' })
+
+    expect(modify).toBe('---\nabc: xyz\nversion: 3\n---\n\n<span class="alert alert-info">This is an alert</span>\n')
   })
 })

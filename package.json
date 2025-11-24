@@ -42,6 +42,18 @@
     ".": {
       "types": "./dist/index.d.mts",
       "import": "./dist/index.mjs"
+    },
+    "./engines/coffeescript": {
+      "types": "./dist/coffeescript.d.mts",
+      "import": "./dist/coffeescript.mjs"
+    },
+    "./engines/javascript": {
+      "types": "./dist/javascript.d.mts",
+      "import": "./dist/javascript.mjs"
+    },
+    "./engines/toml": {
+      "types": "./dist/toml.d.mts",
+      "import": "./dist/toml.mjs"
     }
   },
   "main": "dist/index.mjs",
@@ -51,13 +63,25 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsdown --dts",
+    "build": "tsdown",
     "lint": "eslint .",
     "test": "vitest --coverage",
     "prepare": "simple-git-hooks",
     "release": "pnpm lint && pnpm test --run && pnpm build && pnpm release:version && pnpm publish --access public",
     "release:changelog": "conventional-changelog -p angular",
     "release:version": "bumpp package.json --execute=\"pnpm release:changelog\" --commit \"build: publish v%s\" --all --push --tag"
+  },
+  "peerDependencies": {
+    "coffeescript": ">=2",
+    "smol-toml": ">=1"
+  },
+  "peerDependenciesMeta": {
+    "coffeescript": {
+      "optional": true
+    },
+    "smol-toml": {
+      "optional": true
+    }
   },
   "dependencies": {
     "js-yaml": "^4.1.1"
@@ -78,7 +102,7 @@
     "gray-matter-ts": "file:.",
     "lint-staged": "^16.2.7",
     "simple-git-hooks": "^2.13.1",
-    "toml": "^3.0.0",
+    "smol-toml": "^1.5.2",
     "tsdown": "^0.16.6",
     "typescript": "^5.9.3",
     "vitest": "^4.0.13"
