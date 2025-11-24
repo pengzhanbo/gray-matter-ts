@@ -67,9 +67,10 @@
     "lint": "eslint .",
     "test": "vitest --coverage",
     "prepare": "simple-git-hooks",
-    "release": "pnpm lint && pnpm test --run && pnpm build && pnpm release:version && pnpm publish --access public",
+    "release:publish": "pnpm publish --provenance --access public",
+    "release:check": "pnpm lint && pnpm test --run && pnpm build",
     "release:changelog": "conventional-changelog -p angular",
-    "release:version": "bumpp package.json --execute=\"pnpm release:changelog\" --commit \"build: publish v%s\" --all --push --tag"
+    "release": "bumpp package.json --execute=\"pnpm release:changelog\" --commit \"build: publish v%s\" --all --push --tag"
   },
   "peerDependencies": {
     "coffeescript": ">=2",
