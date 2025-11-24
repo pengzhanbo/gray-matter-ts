@@ -41,7 +41,7 @@ jobs:
         id: publish
         run: |
           pnpm build
-          pnpm release:publish --no-git-checks
+          pnpm release:publish --no-git-checks --tag next
 
       - run: npx changelogithub
         env:
