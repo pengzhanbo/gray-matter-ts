@@ -1,3 +1,7 @@
+# [1.0.0-beta.4](https://github.com/pengzhanbo/gray-matter-ts/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2025-11-24)
+
+
+
 # [1.0.0-beta.3](https://github.com/pengzhanbo/gray-matter-ts/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2025-11-24)
 
 
